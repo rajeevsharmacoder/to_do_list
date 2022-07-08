@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+{% block body %}
+<h1>{{ task.name }}</h1>
+{% if task.description is None %}
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus ex, congue eleifend volutpat vel, efficitur ac odio. Vestibulum suscipit ac massa id dapibus. Phasellus id erat vitae nisl scelerisque sodales. Donec fringilla urna mi, placerat aliquet augue imperdiet vitae. In eget leo porta, auctor metus aliquet, vehicula sapien. Nam malesuada commodo tellus, sit amet mollis turpis porttitor sed. Donec finibus ullamcorper lectus eget mollis. Praesent suscipit volutpat orci, at iaculis ligula ultrices vel.</p>
+{% else %}
+<p>{{ task.description }}</p>
+{% endif %}
+<table>
+    <tr>
+        <td>
+            <a href="{% url 'website:update' task.id %}" class="btn btn-outline-secondary" tabindex="-1" role="button">Edit</a>
+        </td>
+        <td>
+            <form action="{% url 'website:delete' task.id %}" method="POST">
+                {% csrf_token %}
+                <input type=submit class="btn btn-outline-danger" value="Delete" />
+            </form>
+        </td>
+    </tr>
+</table>
+<!-- <a href="{% url 'website:index' %}" class="btn btn-outline-danger" tabindex="-1" role="button">Delete</a> -->
+<br/>
+<a href="{% url 'website:index' %}">Back</a>
+
+{% endblock %}

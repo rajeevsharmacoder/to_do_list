@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+{% block body %}
+<h1>Add Task</h1>
+<br/>
+<form action="" method=POST>
+    {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Add task" id="add_text_input_1" name="name" required/>
+    <br/>
+    <input type="textarea" class="form-control" placeholder="Add description" id="add_text_input_2" name="description" />
+    <br/>
+    <input type="submit" class="btn btn-outline-success" value="Add" />
+</form>
+<br/>
+<a href="{% url 'website:index' %}">Back</a>
+{% endblock %}
